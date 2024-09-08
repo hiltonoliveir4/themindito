@@ -22,7 +22,7 @@ function getAvailableTheme(themes: string[]){
         return themes
 
     const availableThemes = themes.filter(theme => ! JSON.parse(savedSortedThemes).includes(theme))
-    if(!availableThemes.length) return ['NÃO HÁ MAIS TEMAS DISPONÍVEIS! MAS VOCÊ RESETAR OS TEMAS OU PODE SUGERIR MAIS TEMAS AO DESENVOLVEDOR!']
+    if(!availableThemes.length) return ['NÃO HÁ MAIS TEMAS DISPONÍVEIS! MAS VOCÊ PODE RESETAR OS TEMAS OU PODE SUGERIR MAIS TEMAS AO DESENVOLVEDOR!']
 
     return availableThemes
 }
