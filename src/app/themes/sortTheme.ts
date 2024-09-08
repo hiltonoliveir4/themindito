@@ -2,7 +2,7 @@ import Themes from "./themes";
 
 export function sortTheme(){
     const themes = Themes()
-    const availableThemes = getAvailableTheme(themes)
+    let availableThemes = getAvailableTheme(themes)
 
     const randomIndex = Math.floor(Math.random() * availableThemes.length);
     const theme = availableThemes[randomIndex]
@@ -19,10 +19,10 @@ export function resetThemes(){
 function getAvailableTheme(themes: string[]){
     const savedSortedThemes = localStorage.getItem("sortedThemes")
     if(!savedSortedThemes) 
-        return []
+        return themes
 
     const availableThemes = themes.filter(theme => ! JSON.parse(savedSortedThemes).includes(theme))
-    if(!availableThemes.length) return ['NÃO HÁ MAIS TEMAS DISPONÍVEIS, MAS VOCÊ RESETAR OS TEMAS OU PODE SUGERIR MAIS TEMAS AO DESENVOLVEDOR!']
+    if(!availableThemes.length) return ['NÃO HÁ MAIS TEMAS DISPONÍVEIS! MAS VOCÊ RESETAR OS TEMAS OU PODE SUGERIR MAIS TEMAS AO DESENVOLVEDOR!']
 
     return availableThemes
 }
