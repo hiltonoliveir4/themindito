@@ -2,7 +2,7 @@ import Themes from "./themes";
 
 export function sortTheme(){
     const themes = Themes()
-    let availableThemes = getAvailableTheme(themes)
+    const availableThemes = getAvailableTheme(themes)
 
     const randomIndex = Math.floor(Math.random() * availableThemes.length);
     const theme = availableThemes[randomIndex]

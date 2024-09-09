@@ -1,18 +1,24 @@
 "use client"
 import { useState } from "react";
-import { HandPointing, Trash } from "@phosphor-icons/react";
-import { resetThemes, sortTheme } from "./themes/sortTheme";
+import { HandPointing, Info, Trash } from "@phosphor-icons/react";
+import { resetThemes, sortTheme } from "./components/themes/sortTheme";
+import ModalInfo from "./components/modalInfo";
 
 export default function Home() {
   const [theme, setTheme] = useState<string>('Bem-vindo ao The Mindito')
+  const [showInfo, setshowInfo] = useState<boolean>(false)
 
   const handleClickNewTheme = () => {
     setTheme(sortTheme())
   }
 
   const handleClickResetThemes = () => {
-    setTheme('')
+    setTheme('Bem-vindo ao The Mindito')
     resetThemes()
+  }
+
+  const handleClickInfo = () => {
+    setshowInfo(!showInfo)
   }
 
   return (
@@ -28,14 +34,26 @@ export default function Home() {
       >
         <HandPointing className="animate-bounce" size={18} weight="fill" /> Sortear tema
       </button>
-      <button className="
-        flex items-center gap-2 absolute shadow-md shadow-red-700/50 
-        bg-gradient-to-r from-red-700 to-red-800 text-white 
-        top-8 right-8 rounded-md px-3 py-1 text-sm font-bold"
-        onClick={handleClickResetThemes}
-      >
-        <Trash size={18} weight="fill" /> Resetar temas
-      </button>
+      <div className="flex gap-3 absolute top-8 right-8">
+        <button className="
+          flex items-center gap-2 shadow-md shadow-red-700/50 
+          bg-gradient-to-r from-red-700 to-red-800 text-white 
+          rounded-md px-3 py-1 text-sm font-bold"
+          onClick={handleClickResetThemes}
+        >
+          <Trash size={18} weight="fill" /> Resetar temas
+        </button>
+        <button className="
+          flex items-center gap-2 shadow-md shadow-blue-700/50 
+          bg-gradient-to-r from-blue-700 to-blue-800 text-white 
+          rounded-md px-3 py-1 text-sm font-bold"
+          onClick={handleClickInfo}
+        >
+          <Info size={18} weight="fill" />
+        </button>
+      </div>
+
+      {showInfo && <ModalInfo handleClickClose={handleClickInfo}/>}
     </div>
   );
 }
