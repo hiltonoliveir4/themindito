@@ -7,7 +7,7 @@ interface ModalInfoProps {
 
 export default function ModalInfo({handleClickClose}:ModalInfoProps){
     return(
-        <div className="absolute top-7 bg-neutral-700 flex flex-col items-center justify-center m-5 p-3 rounded-lg">
+        <div className="absolute top-7 md:right-12 bg-neutral-700 flex flex-col items-center justify-center m-5 p-3 rounded-lg md:w-96">
             <div className="mb-8">
                 <div className="flex items-center">
                     <h1 className="font-bold text-lg w-full">Bem vindo!</h1>
